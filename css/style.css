@@ -635,10 +635,11 @@ section h2::after {
         align-items: center;
     }
 
-    /* Benefícios */
     .beneficios-grid {
-        grid-template-columns: 1fr;
-    }
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 35px;
+}
 
     /* Menu Mobile */
     .nav-links {
@@ -661,3 +662,4 @@ section h2::after {
         display: flex;
     }
 }
+
