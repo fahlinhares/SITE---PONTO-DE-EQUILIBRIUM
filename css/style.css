@@ -635,11 +635,28 @@ section h2::after {
         align-items: center;
     }
 
+    /* Beneficios Quadros */
+    
+    .beneficios {
+        padding: 60px 15px;
+        /* reduz espaçamento lateral */
+    }
+
+    .beneficios-container {
+        max-width: 100%;
+        padding: 0;
+    }
+
     .beneficios-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 35px;
-}
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .beneficio-card {
+        padding: 25px 20px;
+        /* reduz padding interno */
+        border-radius: 18px;
+    }
 
     /* Menu Mobile */
     .nav-links {
@@ -662,4 +679,5 @@ section h2::after {
         display: flex;
     }
 }
+
 
