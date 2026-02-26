@@ -624,22 +624,23 @@ section h2::after {
     transform: translateY(0) scale(1);
 }
 
-/* RESPONSIVO */
+/* ================= RESPONSIVO ================= */
 
-/* Horários de Funcionamento */
-@media(max-width:768px) {
+@media (max-width: 768px) {
+
+    /* Horários */
     .horarios-container {
         flex-direction: column;
         gap: 20px;
         align-items: center;
     }
-}
 
-@media (max-width: 768px) {
-    .grid {
+    /* Benefícios */
+    .beneficios-grid {
         grid-template-columns: 1fr;
     }
 
+    /* Menu Mobile */
     .nav-links {
         position: fixed;
         top: 0;
