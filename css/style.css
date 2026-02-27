@@ -1159,7 +1159,7 @@ SE ALTERAR:
 
 @media (max-width: 768px) {
     #mtc p {
-        text-align: left;
+        text-align: justify;
         text-justify: auto;
     }
 }
