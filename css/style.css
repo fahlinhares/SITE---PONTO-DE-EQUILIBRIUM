@@ -451,9 +451,8 @@ SE ALTERAR:
     line-height: 1.8;
     margin-bottom: 18px;
     text-align: justify;
-    text-justify: inter-word;
+    line-height: 1.9;
 }
-
 
 /* ==================================================
 09 - TERAPIAS - ESTILO PREMIUM
@@ -1101,6 +1100,21 @@ SE ALTERAR:
     }
 }
 
+
+/* ==================================================
+ - Medicina Tradicional Chinesa /* SECTION 
+=====================================================*/
+
+
+@media (max-width: 768px) {
+    #mtc p {
+        text-align: left;
+        text-justify: auto;
+    }
+}
+
+
+
 /* ==================================================
 14 - MENU MOBILE (OVERLAY LATERAL)
 ==================================================
@@ -1151,15 +1165,4 @@ SE ALTERAR:
 .menu-overlay.active {
     opacity: 1;
     visibility: visible;
-}
-
-/* ==================================================
-09 - Medicina Tradicional Chinesa /* SECTION 
-=====================================================*/
-
-@media (max-width: 768px) {
-    #mtc p {
-        text-align: justify;
-        text-justify: auto;
-    }
 }
