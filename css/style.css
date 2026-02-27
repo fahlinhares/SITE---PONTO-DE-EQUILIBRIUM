@@ -1,14 +1,44 @@
+/* ==================================================
+MAPA ESTRUTURAL DO SITE
+==================================================
+
+01 - RESET E PADRÕES GLOBAIS
+02 - VARIÁVEIS (CORES DO SISTEMA)
+03 - NAVBAR (DESKTOP)
+04 - HERO / HEADER
+05 - LOGO E BOTÃO PRINCIPAL
+06 - SEÇÕES PADRÃO
+07 - CARDS (TERAPIAS - ACORDEÃO)
+08 - WHATSAPP FLOAT
+09 - BENEFÍCIOS PREMIUM
+10 - SOBRE PROFISSIONAL
+11 - HORÁRIOS
+12 - ANIMAÇÕES
+13 - RESPONSIVO
+14 - MENU MOBILE (OVERLAY)
+
+================================================== */
+
+
+/* ==================================================
+01 - RESET E PADRÕES GLOBAIS
+==================================================
+
+AFETA:
+✔ Todo o site
+✔ Espaçamentos
+✔ Modelo de caixa (box model)
+
+SE ALTERAR:
+⚠ Pode quebrar alinhamentos gerais
+⚠ Pode mudar comportamento global
+
+*/
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-:root {
-    --primary: #2F7C8C;
-    --primary-dark: #1F5E6B;
-    --primary-light: #CFEAF4;
-    --gold: #C6A85B;
 }
 
 body {
@@ -18,7 +48,45 @@ body {
     line-height: 1.6;
 }
 
-/* NAVBAR */
+/* ==================================================
+02 - VARIÁVEIS (CORES DO SISTEMA)
+==================================================
+
+AFETA:
+✔ Cores do site inteiro
+✔ Botões
+✔ Navbar
+✔ Cards
+✔ Elementos de destaque
+
+SE ALTERAR:
+✔ Rebranding instantâneo
+✔ Atualiza visual completo
+
+*/
+
+:root {
+    --primary: #2F7C8C;
+    --primary-dark: #1F5E6B;
+    --primary-light: #CFEAF4;
+    --gold: #C6A85B;
+}
+
+/* ==================================================
+03 - NAVBAR (DESKTOP)
+==================================================
+
+AFETA:
+✔ Menu superior
+✔ Posicionamento fixo
+✔ Estilo dos links
+
+SE ALTERAR:
+⚠ Pode sobrepor seções
+⚠ Pode afetar responsividade
+⚠ Cuidado com z-index
+
+*/
 
 nav {
     width: 100%;
@@ -74,7 +142,20 @@ nav {
     border-radius: 3px;
 }
 
-/* HERO */
+/* ==================================================
+04 - HERO / HEADER
+==================================================
+
+AFETA:
+✔ Primeira impressão do site
+✔ Espaçamento inicial
+✔ Área de destaque principal
+
+SE ALTERAR:
+⚠ Pode cortar conteúdo
+⚠ Pode afetar altura da dobra
+
+*/
 
 header {
     min-height: 100vh;
@@ -86,7 +167,15 @@ header {
     text-align: center;
 }
 
-/* ================= LOGO ================= */
+/* ==================================================
+05 - LOGO E BOTÃO PRINCIPAL
+==================================================
+
+AFETA:
+✔ Identidade visual
+✔ Destaque principal
+
+*/
 
 .logo-top {
     display: flex;
@@ -138,7 +227,15 @@ header {
     transform: translateY(-3px);
 }
 
-/* SEÇÕES */
+/* ==================================================
+06 - SEÇÕES PADRÃO
+==================================================
+
+AFETA:
+✔ Espaçamento interno das seções
+✔ Largura máxima do conteúdo
+
+*/
 
 section {
     padding: 80px 20px;
@@ -166,7 +263,21 @@ section h2::after {
     border-radius: 2px;
 }
 
-/* CARDS */
+/* ==================================================
+07 - CARDS (TERAPIAS - ACORDEÃO)
+==================================================
+
+DEPENDE DO JS
+
+AFETA:
+✔ Lista de terapias
+✔ Animação de abrir/fechar
+
+SE ALTERAR:
+⚠ max-height pequeno pode cortar texto
+⚠ Remover overflow quebra animação
+
+*/
 
 .grid {
     display: grid;
@@ -184,6 +295,7 @@ section h2::after {
     box-shadow: 0 10px 35px rgba(0, 0, 0, 0.05);
     border: 1px solid rgba(0, 0, 0, 0.04);
 }
+
 
 .card:hover {
     transform: translateY(-8px);
@@ -214,7 +326,7 @@ section h2::after {
 }
 
 .card.active .card-content {
-    max-height: 300px;
+    max-height: 1000px;
     opacity: 1;
 }
 
@@ -222,7 +334,18 @@ section h2::after {
     transform: rotate(45deg);
 }
 
-/* ================= WHATSAPP FLOAT ================= */
+/* ==================================================
+08 - WHATSAPP FLOAT
+==================================================
+
+AFETA:
+✔ Botão fixo de conversão
+✔ Fica acima de tudo (z-index alto)
+
+SE ALTERAR:
+⚠ Pode sumir atrás de elementos
+
+*/
 
 #whatsapp-float {
     position: fixed;
@@ -254,8 +377,244 @@ section h2::after {
     transform: scale(1.1);
 }
 
-/* ================= BENEFÍCIOS PREMIUM ================= */
+/* ==================================================
+09 - Medicina Tradicional Chinesa /* SECTION 
+=====================================================*/
 
+#mtc {
+    padding: 140px 20px;
+    background: linear-gradient(135deg, #E6F2F5, #f9fcfd);
+}
+
+/* CONTAINER */
+.mtc {
+    max-width: 820px;
+    margin: 0 auto;
+    text-align: left;
+
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1s ease;
+}
+
+/* Animação ao aparecer */
+.fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1s ease;
+}
+
+.fade-up.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* TÍTULO */
+.titulo-mtc {
+    font-size: 38px;
+    color: #0F4C5C;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    position: relative;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Linha dourada premium */
+.titulo-mtc::after {
+    content: "";
+    width: 90px;
+    height: 3px;
+    background: linear-gradient(90deg, #C6A85A, #E8D9A8);
+    display: block;
+    margin: 18px auto 35px;
+    border-radius: 4px;
+}
+
+/* INTRO */
+.mtc-intro::first-letter {
+    font-size: 42px;
+    font-weight: bold;
+    color: #C6A85A;
+    float: left;
+    line-height: 1;
+    padding-right: 8px;
+}
+
+/* PARÁGRAFOS */
+#mtc p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 18px;
+}
+
+
+/* ==================================================
+09 - TERAPIAS - ESTILO PREMIUM
+==================================================
+
+AFETA:
+✔ Seção institucional
+✔ Grid em 2 colunas
+✔ Cards elegantes
+
+SE ALTERAR:
+⚠ Alterar grid pode quebrar layout
+
+*/
+
+#terapias {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+.terapia-card {
+    background: #ffffff;
+    ...
+}
+
+
+/* CARD BASE */
+.terapia-card {
+    background: #ffffff;
+    border-radius: 18px;
+    margin-bottom: 18px;
+    transition: all 0.35s ease;
+    border: 1px solid #e8f1f3;
+}
+
+.terapia-card:hover {
+    border-color: #cfe6ea;
+}
+
+/* HEADER */
+.terapia-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 32px;
+    cursor: pointer;
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: 500;
+    color: #1f3f45;
+    letter-spacing: 0.3px;
+}
+
+/* Ícone mais suave */
+.icon {
+    font-size: 18px;
+    color: #6aa5ad;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.terapia-card.active .icon {
+    transform: rotate(45deg);
+    color: #2c7c86;
+}
+
+/* CONTEÚDO */
+
+.terapia-card-content {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    padding: 0 32px;
+    transform: translateY(-6px);
+    transition:
+        max-height 0.45s ease,
+        opacity 0.3s ease,
+        transform 0.3s ease,
+        padding 0.3s ease;
+}
+
+.terapia-card.active .terapia-card-content {
+    max-height: 500px;
+    opacity: 1;
+    transform: translateY(0);
+    padding: 0 32px 28px 32px;
+}
+
+/* LISTA */
+
+.terapia-card-content ul {
+    padding-left: 18px;
+    margin: 12px 0 22px 0;
+}
+
+.terapia-card-content li {
+    margin-bottom: 6px;
+    color: #385e63;
+    font-size: 15px;
+}
+
+/* CARD ATIVO */
+.terapia-card.active {
+    background: #f9fcfd;
+    border-color: #d8ecef;
+}
+
+/* Quando abre */
+.terapia-card.active .terapia-card-content {
+    max-height: 500px;
+    opacity: 1;
+    transform: translateY(0);
+    padding: 10px 30px 30px 30px;
+}
+
+/* Ícone gira suavemente */
+.terapia-card.active .icon {
+    transform: rotate(45deg);
+}
+
+.icon {
+    transition: transform 0.3s ease;
+}
+
+/* BOTÃO WHATSAPP */
+
+.btn-terapia {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #25D366;
+    color: #ffffff;
+    padding: 11px 22px;
+    border-radius: 40px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+.btn-terapia:hover {
+    background: #1ebe5d;
+    transform: translateY(-2px);
+}
+
+.btn-terapia:active {
+    transform: scale(0.97);
+}
+
+
+
+/* ==================================================
+09 - BENEFÍCIOS PREMIUM
+==================================================
+
+AFETA:
+✔ Seção institucional
+✔ Grid em 3 colunas
+✔ Cards elegantes
+
+SE ALTERAR:
+⚠ Alterar grid pode quebrar layout
+
+*/
 .beneficios {
     padding: 120px 20px;
     background: linear-gradient(180deg, #ffffff 0%, #f4f9fb 100%);
@@ -284,13 +643,6 @@ section h2::after {
     border-radius: 3px;
 }
 
-.subtitulo {
-    max-width: 750px;
-    margin: 0 auto 70px;
-    color: #5f6f75;
-    font-size: 16px;
-    line-height: 1.8;
-}
 
 /* GRID MAIS SOFISTICADO */
 
@@ -374,7 +726,20 @@ section h2::after {
     font-weight: bold;
 }
 
-/* ================= SOBRE PROFISSIONAL ================= */
+
+/* ==================================================
+11 - SOBRE PROFISSIONAL
+==================================================
+
+AFETA:
+✔ Seção pessoal
+✔ Foto redonda
+✔ Informações institucionais
+
+SE ALTERAR:
+⚠ object-fit errado pode distorcer imagem
+
+*/
 
 .tag-profissional {
     font-size: 16px;
@@ -489,7 +854,15 @@ section h2::after {
         0 0 0 6px rgba(255, 255, 255, 0.6);
 }
 
-/* ================= Horários de Funcionamento  ================= */
+/* ==================================================
+11 - HORÁRIOS
+==================================================
+
+AFETA:
+✔ Cards de horários
+✔ Layout flexível
+
+*/
 
 .tag-horarios {
     font-size: 16px;
@@ -611,7 +984,19 @@ section h2::after {
 }
 
 
-/* ================= ANIMAÇÃO SUAVE ================= */
+/* ==================================================
+12 - ANIMAÇÕES
+==================================================
+
+DEPENDE DO JS
+
+AFETA:
+✔ Efeito ao rolar a página
+
+SE ALTERAR:
+⚠ Pode deixar site pesado
+
+*/
 
 .fade-up {
     opacity: 0;
@@ -624,7 +1009,9 @@ section h2::after {
     transform: translateY(0) scale(1);
 }
 
-/* ================= RESPONSIVO ================= */
+/* ==================================================
+13 - RESPONSIVO
+================================================== */
 
 @media (max-width: 768px) {
 
@@ -636,7 +1023,7 @@ section h2::after {
     }
 
     /* Beneficios Quadros */
-    
+
     .beneficios {
         padding: 60px 15px;
         /* reduz espaçamento lateral */
@@ -658,26 +1045,105 @@ section h2::after {
         border-radius: 18px;
     }
 
-    /* Menu Mobile */
+}
+
+/* ==================================================
+   MENU MOBILE – PREMIUM BLUR OVERLAY
+================================================== */
+
+@media (max-width: 768px) {
+
     .nav-links {
         position: fixed;
         top: 0;
         right: -100%;
         height: 100vh;
-        width: 80%;
+        width: 75%;
+        display: flex;
         flex-direction: column;
-        background: var(--primary-dark);
-        padding-top: 80px;
-        transition: right 0.3s ease;
+        gap: 18px;
+        padding: 100px 30px;
+
+        background: rgba(15, 60, 70, 0.75);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+
+        transition: right 0.35s ease;
+        box-shadow: -10px 0 40px rgba(0, 0, 0, 0.15);
     }
 
     .nav-links.active {
         right: 0;
     }
 
+    .nav-links a {
+        background: rgba(255, 255, 255, 0.08);
+        padding: 14px 18px;
+        border-radius: 12px;
+        color: white;
+        font-size: 16px;
+        transition: all 0.3s ease;
+    }
+
+    .nav-links a:hover {
+        background: rgba(255, 255, 255, 0.18);
+        transform: translateX(5px);
+    }
+
     .menu-toggle {
         display: flex;
+        z-index: 1100;
     }
 }
 
+/* ==================================================
+14 - MENU MOBILE (OVERLAY LATERAL)
+==================================================
 
+DEPENDE DO JS
+
+AFETA:
+✔ Menu lateral no celular
+
+SE ALTERAR:
+⚠ Pode impedir abertura
+⚠ Cuidado com right: -100%
+
+*/
+.nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    width: 80%;
+    flex-direction: column;
+    background: var(--primary-dark);
+    padding-top: 80px;
+    transition: right 0.3s ease;
+}
+
+.nav-links.active {
+    right: 0;
+}
+
+.menu-toggle {
+    display: flex;
+}
+
+/* 🔥 OVERLAY DO MENU */
+.menu-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s ease;
+    z-index: 900;
+}
+
+.menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
