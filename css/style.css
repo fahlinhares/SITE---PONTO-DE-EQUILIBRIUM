@@ -42,10 +42,33 @@ SE ALTERAR:
 }
 
 body {
-    background-color: var(--primary-light);
-    font-family: 'Poppins', sans-serif;
-    color: var(--primary-dark);
+    font-family: 'Montserrat', sans-serif;
+    /* corpo do site */
+    font-weight: 400;
+    color: #333333;
+    /* texto padrão escuro */
     line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: #1A1A2E;
+    /* azul escuro, elegante */
+    margin: 0 0 10px 0;
+}
+
+p {
+    font-family: 'Montserrat', sans-serif;
+    /* parágrafos */
+    font-weight: 400;
+    color: #333333;
+    /* texto legível */
 }
 
 /* ==================================================
@@ -74,19 +97,7 @@ SE ALTERAR:
 
 /* ==================================================
 03 - NAVBAR (DESKTOP)
-==================================================
-
-AFETA:
-✔ Menu superior
-✔ Posicionamento fixo
-✔ Estilo dos links
-
-SE ALTERAR:
-⚠ Pode sobrepor seções
-⚠ Pode afetar responsividade
-⚠ Cuidado com z-index
-
-*/
+================================================== */
 
 nav {
     width: 100%;
@@ -103,11 +114,25 @@ nav {
 
 .nav-logo {
     font-family: 'Playfair Display', serif;
-    font-size: 22px;
-    color: white;
+    font-size: clamp(1.2rem, 4vw, 2rem);
+    /* ajusta automaticamente entre 1.2rem e 2rem */
+    font-weight: 700;
+    color: #ffffff;
     text-decoration: none;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    /* mantém em uma linha */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: color 0.3s ease;
 }
 
+/* Hover */
+.nav-logo:hover {
+    color: #f0f0f0;
+}
+
+/* MENU DESKTOP */
 .nav-links {
     display: flex;
     gap: 15px;
@@ -128,6 +153,14 @@ nav {
     color: var(--primary-dark);
 }
 
+.nav-logo-icon {
+    width: 16px;
+    /* tamanho intermediário */
+    height: 16px;
+    object-fit: contain;
+}
+
+/* BOTÃO HAMBURGER (escondido no desktop) */
 .menu-toggle {
     display: none;
     flex-direction: column;
@@ -140,6 +173,81 @@ nav {
     height: 3px;
     background: white;
     border-radius: 3px;
+}
+
+/* ==================================================
+04 - MENU MOBILE
+================================================== */
+
+@media (max-width: 768px) {
+
+    /* Esconde menu horizontal */
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 80%;
+        flex-direction: column;
+        padding: 100px 30px;
+        gap: 18px;
+
+        background: rgba(15, 60, 70, 0.85);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+
+        transform: translateX(100%);
+        transition: transform 0.35s ease;
+
+        z-index: 1000;
+    }
+
+    .nav-links.active {
+        transform: translateX(0);
+    }
+
+    /* Estilo dos links no mobile */
+    .nav-links a {
+        background: rgba(255, 255, 255, 0.08);
+        padding: 14px 18px;
+        border-radius: 12px;
+        color: white;
+        font-size: 16px;
+    }
+
+    .nav-links a:hover {
+        background: rgba(255, 255, 255, 0.18);
+        transform: translateX(5px);
+    }
+
+    /* Mostra botão hamburger */
+    .menu-toggle {
+        display: flex;
+        z-index: 1100;
+    }
+}
+
+/* ==================================================
+05 - MENU 🔥 OVERLAY
+==================================================*/
+
+.menu-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+
+    z-index: 900;
+}
+
+.menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
 }
 
 /* ==================================================
@@ -186,12 +294,22 @@ AFETA:
 }
 
 .logo-top img {
-    width: 280px;
-    /* tamanho principal */
-    height: auto;
-    /* mantém proporção */
+    width: auto;
+
+    height: 80x;
+    /* altura ideal para desktop */
     max-width: 95%;
     /* evita quebrar no mobile */
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    /* sombra sutil */
+    transition: transform 0.3s ease;
+    max-width: 95%;
+}
+
+
+.logo-top img:hover {
+    transform: scale(1.05);
+    /* efeito discreto ao passar o mouse */
 }
 
 .brand-name {
@@ -392,25 +510,13 @@ SE ALTERAR:
     margin: 0 auto;
     padding: 50px;
     background: #ffffff;
-
-    border: 1px solid #E8D9A8;
     border-radius: 20px;
 
-    box-shadow: 0 15px 40px rgba(0,0,0,0.06);
-    border: 1px solid rgba(198,168,90,0.5);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(198, 168, 90, 0.5);
 }
 
-/* Animação ao aparecer */
-.fade-up {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: all 1s ease;
-}
 
-.fade-up.show {
-    opacity: 1;
-    transform: translateY(0);
-}
 
 /* TÍTULO */
 .titulo-mtc {
@@ -454,6 +560,87 @@ SE ALTERAR:
     line-height: 1.9;
 }
 
+@media (max-width: 768px) {
+    #mtc p {
+        text-align: left;
+        text-justify: auto;
+    }
+}
+
+
+/* ==================================================
+10 - Medicina Tradicional Chinesa /* SECTION 
+=====================================================*/
+
+#pics {
+    padding: 140px 20px;
+    background: linear-gradient(135deg, #E6F2F5, #f9fcfd);
+}
+
+/* CONTAINER */
+.pics {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 50px;
+    background: #ffffff;
+    border-radius: 20px;
+
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(198, 168, 90, 0.5);
+}
+
+
+
+/* TÍTULO */
+.titulo-pics {
+    font-size: 38px;
+    color: #0F4C5C;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    position: relative;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Linha dourada premium */
+.titulo-pics::after {
+    content: "";
+    width: 90px;
+    height: 3px;
+    background: linear-gradient(90deg, #C6A85A, #E8D9A8);
+    display: block;
+    margin: 18px auto 35px;
+    border-radius: 4px;
+}
+
+/* INTRO */
+.pics-intro::first-letter {
+    font-size: 42px;
+    font-weight: bold;
+    color: #C6A85A;
+    float: left;
+    line-height: 1;
+    padding-right: 8px;
+}
+
+/* PARÁGRAFOS */
+#pics p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 18px;
+    text-align: justify;
+    line-height: 1.9;
+}
+
+@media (max-width: 768px) {
+    #mtc p {
+        text-align: left;
+        text-justify: auto;
+    }
+}
+
+
 /* ==================================================
 09 - TERAPIAS - ESTILO PREMIUM
 ==================================================
@@ -476,7 +663,7 @@ SE ALTERAR:
 
 .terapia-card {
     background: #ffffff;
-    ...
+
 }
 
 
@@ -562,22 +749,18 @@ SE ALTERAR:
     border-color: #d8ecef;
 }
 
-/* Quando abre */
-.terapia-card.active .terapia-card-content {
-    max-height: 500px;
-    opacity: 1;
-    transform: translateY(0);
-    padding: 10px 30px 30px 30px;
-}
 
 /* Ícone gira suavemente */
 .terapia-card.active .icon {
     transform: rotate(45deg);
 }
 
-.icon {
-    transition: transform 0.3s ease;
-}
+
+
+/* ==================================================
+ - Medicina Tradicional Chinesa /* SECTION 
+=====================================================*/
+
 
 /* BOTÃO WHATSAPP */
 
@@ -722,14 +905,6 @@ SE ALTERAR:
     font-weight: bold;
 }
 
-.beneficio-card li::before {
-    content: "•";
-    position: absolute;
-    left: 0;
-    color: var(--gold);
-    font-weight: bold;
-}
-
 
 /* ==================================================
 11 - SOBRE PROFISSIONAL
@@ -858,6 +1033,17 @@ SE ALTERAR:
         0 0 0 6px rgba(255, 255, 255, 0.6);
 }
 
+/* ================Rresponsivo ===============*/
+
+@media (max-width: 768px) {
+
+    .about-photo img {
+        width: 85vw;
+        max-width: 450px;
+    }
+
+}
+
 /* ==================================================
 11 - HORÁRIOS
 ==================================================
@@ -904,12 +1090,6 @@ AFETA:
     margin-bottom: 40px;
 }
 
-.horarios-container {
-    display: flex;
-    gap: 30px;
-    justify-content: center;
-    flex-wrap: wrap;
-}
 
 .horario-card {
     background: #ffffff;
@@ -1049,120 +1229,4 @@ SE ALTERAR:
         border-radius: 18px;
     }
 
-}
-
-/* ==================================================
-   MENU MOBILE – PREMIUM BLUR OVERLAY
-================================================== */
-
-@media (max-width: 768px) {
-
-    .nav-links {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        height: 100vh;
-        width: 75%;
-        display: flex;
-        flex-direction: column;
-        gap: 18px;
-        padding: 100px 30px;
-
-        background: rgba(15, 60, 70, 0.75);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-
-        transition: right 0.35s ease;
-        box-shadow: -10px 0 40px rgba(0, 0, 0, 0.15);
-    }
-
-    .nav-links.active {
-        right: 0;
-    }
-
-    .nav-links a {
-        background: rgba(255, 255, 255, 0.08);
-        padding: 14px 18px;
-        border-radius: 12px;
-        color: white;
-        font-size: 16px;
-        transition: all 0.3s ease;
-    }
-
-    .nav-links a:hover {
-        background: rgba(255, 255, 255, 0.18);
-        transform: translateX(5px);
-    }
-
-    .menu-toggle {
-        display: flex;
-        z-index: 1100;
-    }
-}
-
-
-/* ==================================================
- - Medicina Tradicional Chinesa /* SECTION 
-=====================================================*/
-
-
-@media (max-width: 768px) {
-    #mtc p {
-        text-align: left;
-        text-justify: auto;
-    }
-}
-
-
-
-/* ==================================================
-14 - MENU MOBILE (OVERLAY LATERAL)
-==================================================
-
-DEPENDE DO JS
-
-AFETA:
-✔ Menu lateral no celular
-
-SE ALTERAR:
-⚠ Pode impedir abertura
-⚠ Cuidado com right: -100%
-
-*/
-.nav-links {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    height: 100vh;
-    width: 80%;
-    flex-direction: column;
-    background: var(--primary-dark);
-    padding-top: 80px;
-    transition: right 0.3s ease;
-}
-
-.nav-links.active {
-    right: 0;
-}
-
-.menu-toggle {
-    display: flex;
-}
-
-/* 🔥 OVERLAY DO MENU */
-.menu-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(3px);
-    -webkit-backdrop-filter: blur(3px);
-    opacity: 0;
-    visibility: hidden;
-    transition: 0.3s ease;
-    z-index: 900;
-}
-
-.menu-overlay.active {
-    opacity: 1;
-    visibility: visible;
 }
