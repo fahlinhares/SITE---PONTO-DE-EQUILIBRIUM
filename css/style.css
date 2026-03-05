@@ -98,6 +98,24 @@ SE ALTERAR:
 
 
 /* 03 ================= NAVBAR (DESKTOP) ================= */
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    z-index: 1002;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: white;
+    border-radius: 3px;
+}
+
+
 nav {
     width: 100%;
     display: flex;
@@ -224,6 +242,75 @@ AFETA:
     color: white;
     transform: translateY(-3px);
 }
+
+
+/* ==================================================
+ - MENU 🔥 OVERLAY
+==================================================*/
+
+.menu-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+
+    z-index: 900;
+}
+
+.menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ==================================================
+ - WHATSAPP FLOAT
+==================================================
+
+AFETA:
+✔ Botão fixo de conversão
+✔ Fica acima de tudo (z-index alto)
+
+SE ALTERAR:
+⚠ Pode sumir atrás de elementos
+
+*/
+
+#whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background: #25D366;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    text-decoration: none;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 0.3s ease;
+    z-index: 9999;
+}
+
+#whatsapp-float.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#whatsapp-float:hover {
+    transform: scale(1.1);
+}
+
+
 
 
 /* ==================================================
@@ -1082,4 +1169,147 @@ SE ALTERAR:
 
 .btn-map:hover {
     opacity: 0.85;
+}
+
+/* =========================
+   MOBILE RESPONSIVO
+========================= */
+@media (max-width: 768px) {
+
+    /* NAVBAR */
+
+    /* =========================
+   MENU MOBILE LATERAL
+========================= */
+
+    .menu-toggle {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        z-index: 1100;
+    }
+
+    .menu-toggle span {
+        width: 25px;
+        height: 3px;
+        background: white;
+        border-radius: 3px;
+        transition: 0.3s;
+    }
+
+    /* animação hambúrguer virar X */
+
+    .menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    nav {
+        padding: 15px 20px;
+
+
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -260px;
+        width: 260px;
+        height: 100vh;
+
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(12px);
+
+        border-left: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: -8px 0 30px rgba(0, 0, 0, 0.35);
+
+        display: flex;
+        flex-direction: column;
+
+        padding: 110px 35px;
+        /* mais espaço da borda */
+        gap: 18px;
+
+        transition: right 0.35s ease;
+        z-index: 1001;
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .nav-links a {
+        width: 100%;
+        padding: 12px 15px;
+
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+
+        border-radius: 8px;
+
+        transition: 0.25s;
+    }
+
+
+    .nav-links a:hover {
+        background: rgba(255, 255, 255, 0.12);
+        transform: translateX(5px);
+    }
+
+
+    /* HERO */
+    .hero {
+        padding: 40px 20px;
+        text-align: center;
+    }
+
+    .brand-name {
+        font-size: 22px;
+    }
+
+    /* SOBRE */
+    .about-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-photo img {
+        width: 80%;
+        margin-top: 20px;
+    }
+
+    /* TERAPIAS */
+    .terapias-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* BENEFÍCIOS */
+    .beneficios-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* HORÁRIOS */
+    .horarios-container {
+        flex-direction: column;
+    }
+
+    /* CONTATO */
+    .contato-wrapper {
+        padding: 20px;
+        text-align: center;
+    }
+
+    .map iframe {
+        height: 250px;
+    }
+
 }

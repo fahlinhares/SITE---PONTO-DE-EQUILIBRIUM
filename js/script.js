@@ -23,11 +23,11 @@ function initMobileMenu() {
     menuToggle.addEventListener("click", () => {
         navLinks.classList.toggle("active");
         overlay.classList.toggle("active");
+        menuToggle.classList.toggle("active"); // ← AQUI
     });
 
     overlay.addEventListener("click", closeMenu);
 
-    // FECHAR AO CLICAR EM LINK
     const navItems = navLinks.querySelectorAll("a");
     navItems.forEach(link => {
         link.addEventListener("click", closeMenu);
@@ -36,6 +36,7 @@ function initMobileMenu() {
     function closeMenu() {
         navLinks.classList.remove("active");
         overlay.classList.remove("active");
+        menuToggle.classList.remove("active"); // ← AQUI
     }
 }
 
