@@ -177,7 +177,92 @@ header {
     justify-content: center;
     padding: 140px 20px 60px;
     text-align: center;
+    position: relative;
+    /* necessário */
+    overflow: hidden;
+    /* esconde palavras que saírem da tela */
 }
+
+
+
+/* ==================================================
+06 - MARCA D'ÁGUA TERAPIAS (HERO PREMIUM)
+================================================== */
+.watermark-terapias {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-10deg);
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.watermark-terapias span {
+    font-family: 'Playfair Display', serif;
+    font-size: 50px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    white-space: nowrap;
+    text-transform: uppercase;
+    filter: blur(0.5px);
+    /* Gradiente premium */
+    background: linear-gradient(45deg, #C6A85B, #2F7C8C);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: energiaFlutuante 12s ease-in-out infinite;
+    opacity: 1;
+}
+
+/* delays para movimento natural */
+.watermark-terapias span:nth-child(2) {
+    animation-delay: 4s;
+}
+
+.watermark-terapias span:nth-child(3) {
+    animation-delay: 8s;
+}
+
+/* animação principal: flutuação + rotação + escala + opacidade */
+@keyframes energiaFlutuante {
+    0% {
+        transform: translateY(0px) rotate(0deg) scale(1);
+        opacity: 0.25;
+    }
+
+    25% {
+        transform: translateY(-12px) rotate(2deg) scale(1.03);
+        opacity: 0.35;
+    }
+
+    50% {
+        transform: translateY(8px) rotate(-2deg) scale(0.98);
+        opacity: 0.28;
+    }
+
+    75% {
+        transform: translateY(-6px) rotate(1deg) scale(1.02);
+        opacity: 0.38;
+    }
+
+    100% {
+        transform: translateY(0px) rotate(0deg) scale(1);
+        opacity: 0.25;
+    }
+}
+
+/* garantir que logo e botão estejam acima */
+.logo-top,
+.btn-primary {
+    position: relative;
+    z-index: 3;
+}
+
 
 /* ==================================================
 05 - LOGO E BOTÃO PRINCIPAL
@@ -395,23 +480,6 @@ SE ALTERAR:
     color: #444;
 }
 
-.assinatura {
-    margin-top: 30px;
-}
-
-.assinatura span {
-    font-size: 0.9rem;
-    color: #888;
-    font-style: italic;
-}
-
-.assinatura h4 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.4rem;
-    font-weight: 500;
-    color: #c6a85b;
-    margin-top: 5px;
-}
 
 #sobre {
     position: relative;
@@ -1176,7 +1244,45 @@ SE ALTERAR:
 ========================= */
 @media (max-width: 768px) {
 
-    /* NAVBAR */
+
+    .nome-profissional {
+        font-size: 20px;
+        /* reduzido para caber no celular */
+        line-height: 1.1;
+        /* menor espaçamento entre linhas */
+    }
+
+    .subtitulo-profissional {
+        font-size: 16px;
+        /* reduzido no celular */
+        line-height: 1.2;
+    }
+
+
+    /* ============= SUBTÍTULO / ÁREA DE ATUAÇÃO ============== */
+    /* Ex.: Medicina Tradicional Chinesa */
+
+    .mtc-intro {
+        font-size: 14px;
+        /* reduzido no celular */
+        line-height: 1.4;
+        margin: 10px 0 20px 0;
+    }
+
+    .descricao-pics {
+        font-size: 14px;
+        line-height: 1.3;
+        margin: 8px 0 15px 0;
+    }
+
+    /* ===================== TÍTULO PICS ===================== */
+    .titulo-pics {
+        font-size: 22px;
+        /* reduzido no celular */
+        line-height: 1.1;
+        margin: 15px 0;
+    }
+
 
     /* =========================
    MENU MOBILE LATERAL
@@ -1211,6 +1317,8 @@ SE ALTERAR:
     .menu-toggle.active span:nth-child(3) {
         transform: rotate(-45deg) translate(5px, -5px);
     }
+
+    /* NAVBAR */
 
     nav {
         padding: 15px 20px;
@@ -1263,6 +1371,14 @@ SE ALTERAR:
     .nav-links a:hover {
         background: rgba(255, 255, 255, 0.12);
         transform: translateX(5px);
+    }
+
+
+    /*TERAPIAS ---- MARCA DAGUA*/
+
+    .watermark-terapias span {
+        font-size: 30px;
+        letter-spacing: 1px;
     }
 
 
