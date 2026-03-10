@@ -103,3 +103,69 @@ function initFadeUp() {
         observer.observe(el);
     });
 }
+
+/* ==================================================
+0  ESTRELAS ANIMADAS 
+==================================================*/
+
+const carrossel = document.getElementById("carrossel");
+
+let autoScroll;
+
+function iniciarAutoScroll() {
+
+    autoScroll = setInterval(() => {
+
+        carrossel.scrollBy({
+            left: 320,
+            behavior: "smooth"
+        });
+
+        if (carrossel.scrollLeft + carrossel.clientWidth >= carrossel.scrollWidth) {
+
+            carrossel.scrollTo({
+                left: 0,
+                behavior: "smooth"
+            });
+
+        }
+
+    }, 4000);
+
+}
+
+function pararAutoScroll() {
+    clearInterval(autoScroll);
+}
+
+carrossel.addEventListener("mouseenter", pararAutoScroll);
+carrossel.addEventListener("mouseleave", iniciarAutoScroll);
+
+iniciarAutoScroll();
+
+
+/* ==================================================
+0  ESPAÇO
+==================================================*/
+
+const imagens = document.querySelectorAll(".foto img");
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+const fechar = document.querySelector(".fechar");
+
+imagens.forEach(img => {
+    img.addEventListener("click", () => {
+        lightbox.style.display = "flex";
+        lightboxImg.src = img.src;
+    });
+});
+
+fechar.addEventListener("click", () => {
+    lightbox.style.display = "none";
+});
+
+lightbox.addEventListener("click", (e) => {
+    if (e.target !== lightboxImg) {
+        lightbox.style.display = "none";
+    }
+});
