@@ -1652,5 +1652,42 @@ SE ALTERAR:
         object-fit: cover;
     }
 
+    .depoimentos {
+        padding: 70px 20px;
+    }
+
+    .titulo-depoimentos {
+        font-size: 26px;
+        margin-bottom: 35px;
+    }
+
+    .carrossel {
+        gap: 15px;
+    }
+
+    .card {
+        min-width: 260px;
+        padding: 20px;
+    }
+
+    .card p {
+        font-size: 15px;
+    }
+
+    .stars {
+        font-size: 20px;
+    }
+
+    .btn-google {
+        margin-top: 35px;
+        padding: 12px 22px;
+        font-size: 14px;
+    }
+
+}
+
+
+
+
 
 }
