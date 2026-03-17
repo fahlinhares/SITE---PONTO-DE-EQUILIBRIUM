@@ -190,33 +190,34 @@ header {
 ================================================== */
 .watermark-terapias {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(-10deg);
-    width: 100%;
-    height: 80%;
+    inset: 0;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+
+    transform: rotate(-10deg);
     pointer-events: none;
     z-index: 1;
 }
 
 .watermark-terapias span {
+
     font-family: 'Playfair Display', serif;
-    font-size: 50px;
-    font-weight: 600;
-    letter-spacing: 3px;
-    white-space: nowrap;
+    font-size: 100px;
+    font-weight: 500;
+
+    letter-spacing: 6px;
     text-transform: uppercase;
-    filter: blur(0.5px);
-    /* Gradiente premium */
-    background: linear-gradient(45deg, #C6A85B, #2F7C8C);
+
+    opacity: 0.15;
+    filter: blur(0.4px);
+
+    background: linear-gradient(90deg, #b9973f, #2a6f7c);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: energiaFlutuante 12s ease-in-out infinite;
-    opacity: 1;
+
+    animation: energiaSuave 18s ease-in-out infinite;
 }
 
 /* delays para movimento natural */
@@ -256,14 +257,6 @@ header {
     }
 }
 
-/* garantir que logo e botão estejam acima */
-.logo-top,
-.btn-primary {
-    position: relative;
-    z-index: 3;
-}
-
-
 /* ==================================================
 05 - LOGO E BOTÃO PRINCIPAL
 ==================================================
@@ -274,25 +267,35 @@ AFETA:
 
 */
 
+/* garantir que logo e botão estejam acima */
+.logo-top,
+.btn-primary {
+    position: relative;
+    z-index: 3;
+}
+
 .logo-top {
     display: flex;
     justify-content: center;
-    /* centraliza */
     align-items: center;
-    padding: 20px 0;
+    padding: 40px 0;
+    position: relative;
+    z-index: 4;
 }
 
 .logo-top img {
-    width: 280px;
-    /* tamanho principal */
-    height: auto;
-    /* mantém proporção */
+    width: 420px;
+    /* antes 280 */
     max-width: 95%;
-    /* evita quebrar no mobile */
+    height: auto;
+
+    filter: drop-shadow(0 8px 25px rgba(0, 0, 0, 0.25));
+    transition: all 0.4s ease;
 }
 
 .logo-top img:hover {
-    transform: scale(1.05);
+    transform: scale(1.06);
+    filter: drop-shadow(0 12px 35px rgba(0, 0, 0, 0.35));
 }
 
 .brand-name {
@@ -311,23 +314,32 @@ AFETA:
 
 .btn-primary {
     display: inline-block;
-    margin-top: 30px;
-    padding: 14px 40px;
-    background-color: var(--gold);
-    color: var(--primary-dark);
+    margin-top: 40px;
+    padding: 16px 48px;
+
+    background: linear-gradient(135deg, #C6A85B, #E2C77A);
+    color: #1c3b44;
+
     text-decoration: none;
-    border-radius: 50px;
+    border-radius: 60px;
     font-weight: 600;
-    transition: 0.3s ease;
-    box-shadow: 0 10px 25px rgba(198, 168, 91, 0.3);
+    font-size: 16px;
+
+    transition: all 0.35s ease;
+
+    box-shadow:
+        0 10px 30px rgba(198, 168, 91, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 .btn-primary:hover {
-    background-color: var(--primary-dark);
-    color: white;
-    transform: translateY(-3px);
-}
+    transform: translateY(-4px) scale(1.03);
 
+    box-shadow:
+        0 14px 40px rgba(198, 168, 91, 0.45);
+
+    color: #0f2f38;
+}
 
 /* ==================================================
  - MENU 🔥 OVERLAY
@@ -621,7 +633,7 @@ section h2::after {
 
 /* TÍTULO */
 .titulo-mtc {
-    font-size: 38px;
+    font-size: 34px;
     color: #0F4C5C;
     font-weight: 600;
     letter-spacing: 0.5px;
@@ -686,7 +698,7 @@ section h2::after {
 
 /* TÍTULO */
 .titulo-pics {
-    font-size: 38px;
+    font-size: 34px;
     color: #0F4C5C;
     font-weight: 600;
     letter-spacing: 0.5px;
@@ -725,6 +737,442 @@ section h2::after {
     text-align: justify;
     line-height: 1.9;
 }
+
+
+
+
+/* ==================================================
+ACUPUNTURA / MTC - SEÇÃO
+================================================== */
+
+#acupuntura-mtc {
+    padding: 120px 20px;
+    background: linear-gradient(135deg, #f9fcfd, #E6F2F5);
+}
+
+/* CONTAINER */
+
+.acupuntura-box {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 50px;
+    background: #ffffff;
+    border-radius: 20px;
+
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(198, 168, 90, 0.5);
+}
+
+
+/* TÍTULO PRINCIPAL */
+
+.titulo-acupuntura {
+    font-size: 34px;
+    color: #0F4C5C;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+/* Linha dourada */
+
+.titulo-acupuntura::after {
+    content: "";
+    width: 90px;
+    height: 3px;
+    background: linear-gradient(90deg, #C6A85A, #E8D9A8);
+    display: block;
+    margin: 18px auto 35px;
+    border-radius: 4px;
+}
+
+
+/* INTRO (primeira letra premium) */
+
+.intro-acupuntura::first-letter {
+    font-size: 40px;
+    font-weight: bold;
+    color: #C6A85A;
+    float: left;
+    line-height: 1;
+    padding-right: 8px;
+}
+
+
+/* PARÁGRAFOS */
+
+#acupuntura-mtc p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.9;
+    margin-bottom: 18px;
+    text-align: justify;
+}
+
+
+/* SUBTÍTULOS */
+
+.acupuntura-box h4 {
+    margin-top: 25px;
+    margin-bottom: 8px;
+    font-size: 16px;
+    color: #2F7C8C;
+    font-weight: 600;
+}
+
+
+/* TÉCNICAS (CHIPS PREMIUM) */
+
+.tecnicas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 15px 0 25px;
+}
+
+.tecnicas span {
+    background: linear-gradient(135deg, #f1f5f9, #ffffff);
+    padding: 7px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    color: #555;
+
+    border: 1px solid rgba(198, 168, 90, 0.3);
+    transition: all 0.3s ease;
+}
+
+/* hover elegante */
+
+.tecnicas span:hover {
+    background: linear-gradient(135deg, #C6A85A, #E8D9A8);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+
+/* TEXTO FINAL */
+
+.final-acupuntura {
+    margin-top: 10px;
+    font-size: 15.5px;
+    color: #444;
+}
+
+/* ==================================================
+AURICULOTERAPIA
+================================================== */
+
+#auriculoterapia {
+    padding: 120px 20px;
+    background: linear-gradient(135deg, #E6F2F5, #f9fcfd);
+}
+
+/* CONTAINER */
+
+.auriculoterapia-box {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 50px;
+    background: #ffffff;
+    border-radius: 20px;
+
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(198, 168, 90, 0.5);
+}
+
+
+/* TÍTULO */
+
+.titulo-auriculoterapia {
+    font-size: 34px;
+    color: #0F4C5C;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+/* LINHA DOURADA */
+
+.titulo-auriculoterapia::after {
+    content: "";
+    width: 90px;
+    height: 3px;
+    background: linear-gradient(90deg, #C6A85A, #E8D9A8);
+    display: block;
+    margin: 18px auto 35px;
+    border-radius: 4px;
+}
+
+
+/* INTRO COM LETRA DESTACADA */
+
+.intro-auriculoterapia::first-letter {
+    font-size: 40px;
+    font-weight: bold;
+    color: #C6A85A;
+    float: left;
+    line-height: 1;
+    padding-right: 8px;
+}
+
+
+/* PARÁGRAFOS */
+
+#auriculoterapia p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.9;
+    margin-bottom: 18px;
+    text-align: justify;
+}
+
+
+/* SUBTÍTULOS */
+
+.auriculoterapia-box h4 {
+    margin-top: 25px;
+    margin-bottom: 8px;
+    font-size: 16px;
+    color: #2F7C8C;
+    font-weight: 600;
+}
+
+
+/* BENEFÍCIOS (CHIPS) */
+
+.beneficios-auriculoterapia {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 15px 0 25px;
+}
+
+.beneficios-auriculoterapia span {
+    background: linear-gradient(135deg, #f1f5f9, #ffffff);
+    padding: 7px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    color: #555;
+
+    border: 1px solid rgba(198, 168, 90, 0.3);
+    transition: all 0.3s ease;
+}
+
+.beneficios-auriculoterapia span:hover {
+    background: linear-gradient(135deg, #C6A85A, #E8D9A8);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+
+/* TEXTO FINAL */
+
+.final-auriculoterapia {
+    font-size: 15.5px;
+    color: #444;
+}
+
+/* ==================================================
+TERAPIA NEURAL
+================================================== */
+
+#terapia-neural {
+    padding: 120px 20px;
+    background: linear-gradient(135deg, #f9fcfd, #E6F2F5);
+}
+
+/* CONTAINER */
+
+.terapia-neural-box {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 50px;
+    background: #ffffff;
+    border-radius: 20px;
+
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(198, 168, 90, 0.5);
+}
+
+
+/* TÍTULO */
+
+.titulo-terapia-neural {
+    font-size: 34px;
+    color: #0F4C5C;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.titulo-terapia-neural::after {
+    content: "";
+    width: 90px;
+    height: 3px;
+    background: linear-gradient(90deg, #C6A85A, #E8D9A8);
+    display: block;
+    margin: 18px auto 35px;
+    border-radius: 4px;
+}
+
+
+/* INTRO */
+
+.intro-terapia-neural::first-letter {
+    font-size: 40px;
+    font-weight: bold;
+    color: #C6A85A;
+    float: left;
+    line-height: 1;
+    padding-right: 8px;
+}
+
+
+/* PARÁGRAFOS */
+
+#terapia-neural p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.9;
+    margin-bottom: 18px;
+    text-align: justify;
+}
+
+
+/* SUBTÍTULOS */
+
+.terapia-neural-box h4 {
+    margin-top: 25px;
+    margin-bottom: 8px;
+    font-size: 16px;
+    color: #2F7C8C;
+    font-weight: 600;
+}
+
+
+/* TEXTO FINAL */
+
+.final-terapia-neural {
+    font-size: 15.5px;
+    color: #444;
+}
+
+/* ==================================================
+VENTOSATERAPIA
+================================================== */
+
+#ventosaterapia {
+    padding: 120px 20px;
+    background: linear-gradient(135deg, #E6F2F5, #f9fcfd);
+}
+
+/* CONTAINER */
+
+.ventosaterapia-box {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 50px;
+    background: #ffffff;
+    border-radius: 20px;
+
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(198, 168, 90, 0.5);
+}
+
+
+/* TÍTULO */
+
+.titulo-ventosaterapia {
+    font-size: 34px;
+    color: #0F4C5C;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.titulo-ventosaterapia::after {
+    content: "";
+    width: 90px;
+    height: 3px;
+    background: linear-gradient(90deg, #C6A85A, #E8D9A8);
+    display: block;
+    margin: 18px auto 35px;
+    border-radius: 4px;
+}
+
+
+/* INTRO */
+
+.intro-ventosaterapia::first-letter {
+    font-size: 40px;
+    font-weight: bold;
+    color: #C6A85A;
+    float: left;
+    line-height: 1;
+    padding-right: 8px;
+}
+
+
+/* PARÁGRAFOS */
+
+#ventosaterapia p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.9;
+    margin-bottom: 18px;
+    text-align: justify;
+}
+
+
+/* SUBTÍTULOS */
+
+.ventosaterapia-box h4 {
+    margin-top: 25px;
+    margin-bottom: 8px;
+    font-size: 16px;
+    color: #2F7C8C;
+    font-weight: 600;
+}
+
+
+/* BENEFÍCIOS (CHIPS) */
+
+.beneficios-ventosaterapia {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 15px 0 25px;
+}
+
+.beneficios-ventosaterapia span {
+    background: linear-gradient(135deg, #f1f5f9, #ffffff);
+    padding: 7px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    color: #555;
+
+    border: 1px solid rgba(198, 168, 90, 0.3);
+    transition: all 0.3s ease;
+}
+
+.beneficios-ventosaterapia span:hover {
+    background: linear-gradient(135deg, #C6A85A, #E8D9A8);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+
+/* TEXTO FINAL */
+
+.final-ventosaterapia {
+    font-size: 15.5px;
+    color: #444;
+}
+
 
 /* ==================================================
 10 - TERAPIAS - ESTILO PREMIUM
@@ -1485,6 +1933,23 @@ SE ALTERAR:
 
 
     /* =========================
+RESET MOBILE SAFE
+========================= */
+
+    html,
+    body {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    /* evita QUALQUER estouro lateral */
+    * {
+        max-width: 100%;
+    }
+
+
+
+    /* =========================
    MENU MOBILE LATERAL
 ========================= */
 
@@ -1683,11 +2148,5 @@ SE ALTERAR:
         padding: 12px 22px;
         font-size: 14px;
     }
-
-}
-
-
-
-
 
 }
