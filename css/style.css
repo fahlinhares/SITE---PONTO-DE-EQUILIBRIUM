@@ -171,18 +171,61 @@ SE ALTERAR:
 
 header {
     min-height: 100vh;
-    background: linear-gradient(180deg, #CFEAF4 0%, #EAF6FB 100%);
+
+    /* FUNDO COM MAIS PROFUNDIDADE */
+    background: linear-gradient(180deg, #CFEAF4 0%, #EAF6FB 60%, #FFFFFF 100%);
+
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 140px 20px 60px;
+
+    padding: 140px 20px 80px;
+
     text-align: center;
+
     position: relative;
-    /* necessário */
     overflow: hidden;
-    /* esconde palavras que saírem da tela */
+
+    z-index: 2;
 }
 
+/* EFEITO DE LUZ PREMIUM */
+header::before {
+    content: "";
+    position: absolute;
+    top: -20%;
+    left: -10%;
+
+    width: 600px;
+    height: 600px;
+
+    background: radial-gradient(circle, rgba(47, 124, 140, 0.15) 0%, transparent 70%);
+    filter: blur(60px);
+
+    z-index: 0;
+}
+
+/* SEGUNDO PONTO DE LUZ */
+header::after {
+    content: "";
+    position: absolute;
+    bottom: -20%;
+    right: -10%;
+
+    width: 500px;
+    height: 500px;
+
+    background: radial-gradient(circle, rgba(15, 76, 92, 0.12) 0%, transparent 70%);
+    filter: blur(70px);
+
+    z-index: 0;
+}
+
+/* GARANTE QUE O CONTEÚDO FIQUE ACIMA */
+.hero {
+    position: relative;
+    z-index: 2;
+}
 
 
 /* ==================================================
@@ -191,6 +234,7 @@ header {
 .watermark-terapias {
     position: absolute;
     inset: 0;
+
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -198,7 +242,9 @@ header {
 
     transform: rotate(-10deg);
     pointer-events: none;
-    z-index: 1;
+
+    z-index: 0;
+    /* 👈 fundo */
 }
 
 .watermark-terapias span {
@@ -217,7 +263,7 @@ header {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 
-    animation: energiaSuave 18s ease-in-out infinite;
+    animation: energiaFlutuante 18s ease-in-out infinite
 }
 
 /* delays para movimento natural */
